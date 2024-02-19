@@ -1,5 +1,4 @@
 :root{
- --White: hsl(0, 0%, 100%);
 --Grey: hsl(0, 0%, 20%);
 --DarkGrey: hsl(0, 0%, 12%);
 --OffBlack: hsl(0, 0%, 8%);
@@ -8,7 +7,58 @@
 
 body{
     font-size: 14px;
+    background: var(--OffBlack); 
+    font-family: "Inter", sans-serif;  
+}
+p,
+h3{
+    color:white;
+}
+img{
+    width: 100px;
+    border-radius: 90px;
+    margin-top: 10px;
 }
 
+.container{
+    background:var(--DarkGrey);
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 10px;
+    align-items: center;
+}
+.container__name{
+    display: inline;
+    font-size: 2em;
+}
+.container__pais p{
+    color: var(--Green)
+}
+.container__social-media{
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    
+}
+.social-media__item{
+    color: white;
+    height: 30px;
+    width: 300px;
+    padding: 10px;
+    background-color: rgba(51,51,51,255);
+    margin: 8px;
+    border-radius: 10px;
+    /* text-align: center; */
+    justify-content: center;
+}
+.social-media__item:hover{
+    background-color: var(--Green)
+    
+}
+.attribution{
+    color: white
+}
 
 
