@@ -66,11 +66,11 @@ body {
 }
 
 
-@media screen and (max-width: 375px) {
+/* @media screen and (max-width: 375px) {
     .container{
         width: auto;        
     }
     #container__img{
         margin: 10px auto;
     }
-}
+} */
