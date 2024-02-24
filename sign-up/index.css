@@ -1,0 +1,89 @@
+:root {
+    --Tomato: hsl(4, 100%, 67%);
+    --DarkSlateGrey: hsl(234, 29%, 20%);
+    --CharcoalGrey: hsl(235, 18%, 26%);
+    --Grey: hsl(231, 7%, 60%);
+    --White: hsl(0, 0%, 100%);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+}
+
+#mainImg {
+    width: 100%;
+}
+#invalidInput{
+    color:var(--Tomato);
+    border-color: var(--Tomato);
+    background-color: hsla(4, 100%, 67%, 0.2);
+}
+#invalidMessage{
+    color:var(--Tomato)
+}
+#mainContainer {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+.container__mainText {
+    padding: 0 20px;
+}
+
+.container__checkList {
+    margin: auto 20px;
+    display: flex;
+}
+
+.checklist__icon {
+    margin-right: 15px;
+}
+.container__mail{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.container__mail span{
+    position: absolute;
+    left: 200px;
+}
+
+input {
+    margin-top: 9px;
+    margin-bottom: 20px;
+    height: 40px;
+    width: 80%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+input::placeholder {
+    padding: 10px;
+}
+button {
+    height: 55px;
+    width: 80%;
+    border-radius: 15px;
+    background-color: var(--DarkSlateGrey);
+    color: var(--White)
+}
+#secundaryContainer{
+    display: none;
+    height: 100vh;
+    flex-direction: column;
+    margin: 100px 27px;
+    align-items: flex-start;
+}
+#secundaryContainer button {
+    margin: 160px auto;
+    width: 321px;
+}
