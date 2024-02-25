@@ -10,15 +10,13 @@ const invalid = document.getElementById("invalidMessage");
 button.addEventListener("click", (event) => {
     event.preventDefault();
     if (isValidEmail(email.value)) {
-        container.style.display="none"
+        container.style.display = "none"
         secundaryContainer.style.display = "flex";
         emailText.textContent = email.value;
         invalid.style.display = "none";
     } else {
-        invalid.removeAttribute("hidden")       
+        invalid.removeAttribute("hidden")
         email.setAttribute("id", "invalidInput")
-
-
     }
 });
 const dissmissButton = document.getElementById("dissmissButton")
@@ -27,8 +25,9 @@ dissmissButton.addEventListener("click", () => {
     subscribeForm.reset();
     container.style.display = "flex"
     secundaryContainer.style.display = "none"
+    email.setAttribute("id", "input")
 })
 function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
 }
