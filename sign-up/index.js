@@ -7,10 +7,10 @@ const invalid = document.getElementById("invalidMessage")
 const img = document.getElementById("img")
 
 window.addEventListener('resize', function () {
-    if (window.innerWidth >= 375) {
-        img.setAttribute("src", "assets/images/illustration-sign-up-desktop.svg")
-    } else {
+    if (window.innerWidth < 376) {
         img.setAttribute("src", "assets/images/illustration-sign-up-mobile.svg")
+    }else{
+        img.setAttribute("src", "assets/images/illustration-sign-up-desktop.svg")
     }
 })
 
