@@ -21,37 +21,50 @@
 
 
   <div id='mainContainer'>
-    <img src="assets/images/illustration-sign-up-mobile.svg" alt="">
-    <div class="container__mainText">
-      <h1>Stay update!</h1>
-      <p>join 60,000+ product managers receiving monthly update on:</p>
+    <div id="mainImg">
+      <img id="img"src="assets/images/illustration-sign-up-mobile.svg" alt="">
     </div>
-    <div class="container__checkList">
-      <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
-      <p>Product discovery and building what matters</p>
-    </div>
-    <div class="container__checkList">
-      <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
-      <p>Measuring to ensure upsdates are a success</p>
-    </div>
-    <div class="container__checkList">
-      <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
-      <p>And much more!</p>
-    </div>
-      <form class="container__mail">
+    <!-- <img id="mainImg"src="assets/images/illustration-sign-up-mobile.svg" alt=""> -->
+    
+    
+    <div class="checkListContainer">
+      <div class="container__mainText">
+        <h1>Stay update!</h1>
+        <p>join 60,000+ product managers receiving monthly update on:</p>
+      </div>
+      <div class="container__checkList">
+        <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
+        <p>Product discovery and building what matters</p>
+      </div>
+      <div class="container__checkList">
+        <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
+        <p>Measuring to ensure upsdates are a success</p>
+      </div>
+      <div class="container__checkList">
+        <img class="checklist__icon" src="assets/images/icon-list.svg" alt="icon-list">
+        <p>And much more!</p>
+      </div>
+      <form class="container__mail" autocomplete="on">
         <label>Email address</label>
         <span id="invalidMessage" hidden>Valid email required</span>
         <input id="input" name="email" type="email" placeholder="email@company.com" required>
         <button type="submit">Subscribe to monthly newsletters</button>
       </form>
+    </div>
+    
   </div>
   <div id="secundaryContainer">
-    <img src="assets/images/icon-success.svg" alt="success">
-    <h1>Thanks for suscribing!</h1>
-    <p>A confirmation email has beens ent to <b id="emailText">You shouldn't never see this text</b>. Please open it and click the
-      button inside to confirm your subscription</p>
-    <button id="dissmissButton" type="button">Dissmiss message</button>
-  </div>
+    <div id="secundaryMainContainer">
+      <img src="assets/images/icon-success.svg" alt="success">
+      <h1>Thanks for suscribing!</h1>
+      <p>A confirmation email has been sent to <b id="emailText">You shouldn't never see this text</b>. Please open it and
+        click the
+        button inside to confirm your subscription</p>
+      <button id="dissmissButton" type="button">Dissmiss message</button>
+    </div>
+    </div>
+    
   <script src="index.js"></script>
 </body>
+
 </html>
