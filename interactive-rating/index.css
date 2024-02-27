@@ -1,0 +1,128 @@
+:root {
+    --orange: hsl(25, 97%, 53%);
+    --white: hsl(0, 0%, 100%);
+    --lightGrey: hsl(217, 12%, 63%);
+    --mediumGrey: hsl(216, 12%, 54%);
+    --darkBlue: hsl(213, 19%, 18%);
+    --veryDarkBlue: hsl(216, 12%, 8%);
+    --mainFont: "Overpass", sans-serif;
+    --backgroundItem: hsl(214, 12%, 23%);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: var(--veryDarkBlue);
+    font-family: var(--mainFont);
+    color: var(--white)
+}
+
+p {
+    color: var(--lightGrey)
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 380px;
+    width: 310px;
+    margin: 30% auto;
+    background-color: var(--darkBlue);
+    border-radius: 20px;
+}
+
+.container img {
+    height: 20px;
+    width: 20px;
+    border-radius: 100px;
+    padding: 5px;
+    background-color: hsl(214, 12%, 23%);
+}
+
+.textContainer {
+    margin: 30px;
+    margin-bottom: 0;
+}
+
+.rating {
+    margin: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    color: var(--lightGrey);
+
+}
+
+.rating__item {
+    height: 40px;
+    width: 40px;
+    border-radius: 30px;
+    background-color: var(--backgroundItem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating__item:hover {
+    background-color: var(--orange);
+    color: white
+}
+
+button {
+    background-color: var(--orange);
+    border: none;
+    border-radius: 20px;
+    width: 100%;
+    height: 45px;
+    margin-top: 30px;
+    color: var(--white)
+}
+
+.secundaryContainer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 380px;
+    width: 310px;
+    margin: 30% auto;
+    background-color: var(--darkBlue);
+    border-radius: 20px;
+
+
+}
+
+.scoreboard {
+    margin: 10px;
+}
+
+#score {
+    color: var(--orange);
+    background-color: hsla(25, 97%, 53%, 0.05);
+    border-radius: 20px;
+    width: 200px;
+    height: 30px;
+    margin: auto;
+    margin-top: 10px;
+    padding-top: 15px;
+
+}
+
+@media screen and(min-width: 375px) {
+
+    .container {
+        margin: 100px auto;
+    }
+
+    .secundaryContainer {
+        margin: 100px auto;
+    }
+}
