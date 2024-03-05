@@ -7,21 +7,19 @@
     trying to calculted days. Month and years were easy with library date-fns
 
 */
-
-
-import {differenceInDays} from 'https://cdn.skypack.dev/date-fns'
+import { differenceInDays } from 'https://cdn.skypack.dev/date-fns'
 document.addEventListener("DOMContentLoaded", () => {
-    const imgButton = document.getElementById("container__img")
-    const day = document.getElementById("day")
-    const month = document.getElementById("month")
-    const year = document.getElementById("year")
-    const resultDay = document.getElementById("days")
-    const resultMonth = document.getElementById("months")
-    const resultYear = document.getElementById("years")
+    const imgButton = document.getElementById("container__img");
+    const dayInput = document.getElementById("day");
+    const monthInput = document.getElementById("month");
+    const yearInput = document.getElementById("year");
+    const resultDay = document.getElementById("days");
+    const resultMonth = document.getElementById("months");
+    const resultYear = document.getElementById("years");
+    const dateContainer = document.querySelectorAll(".date__item")
 
+    imgButton.addEventListener("click", startDate);
 
-
-    imgButton.addEventListener("click", startDate) 
     function convertDaysToYearsMonthsDays(totalDays) {
         const currentDate = new Date();
 
@@ -29,45 +27,93 @@ document.addEventListener("DOMContentLoaded", () => {
         let months = 0;
         let days = 0;
 
-        // Verify if is a leap year
         const isLeapYear = (year) => (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
 
         while (totalDays > 0) {
             const currentYear = currentDate.getFullYear() + years;
             const daysInYear = isLeapYear(currentYear) ? 366 : 365;
 
-            // Completed days
             if (totalDays >= daysInYear) {
                 totalDays -= daysInYear;
                 years++;
             } else {
-                // completed months
-                const daysInMonth = [31, isLeapYear(currentYear) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-                for (let i = 0; i < 12; i++) {
-                    if (totalDays >= daysInMonth[i]) {
-                        totalDays -= daysInMonth[i];
-                        months++;
-                    } else {
-                        break;
-                    }
+                const daysInMonth = new Date(currentYear, months + 1, 0).getDate();
+                if (totalDays >= daysInMonth) {
+                    totalDays -= daysInMonth;
+                    months++;
+                } else {
+                    days = totalDays;
+                    totalDays = 0;
                 }
-                // days remaining
-                days = totalDays;
-                totalDays = 0;
             }
         }
 
         return { years, months, days };
     }
-    function startDate() {
-        let realDay = parseInt(day.value) + 1 //sum 1 to index days because js manege days from 0 to 30 
-        const actualDate = new Date(`${year.value}-${month.value}-${realDay}`)//actual date. 
-        const totalD = differenceInDays(new Date(), actualDate)//calculate diferents between actual date and input date
-        const totalDays = totalD;
-        
-        const { years, months, days } = convertDaysToYearsMonthsDays(totalDays);//converts day to year, months and days remining 
-        resultDay.innerText = days // round out hours like one more day. Don't contemplated actual time
-        resultMonth.innerText = months
-        resultYear.innerText = years
+
+    function validatedDate(day, month, year) {
+        const error = document.querySelectorAll(".error")
+
+        const dateToValidate = new Date(year, month - 1, day);
+        if (dateToValidate.getDate() !== day) {
+            dateContainer.forEach(element => {
+                element.style.borderColor="Lightred"
+            });
+            error.forEach(element =>{
+                element.removeAttribute("hidden")
+            })
+            throw new Error("día inválido")
+        } else if (dateToValidate.getMonth() !== month - 1) {
+            dateContainer.forEach(element => {
+                element.style.borderColor="Lightred"
+            });
+            error.forEach(element =>{
+                element.removeAttribute("hidden")
+            })
+            throw new Error("Mes inválido")
+        } else if (dateToValidate.getFullYear() > year) {
+            dateContainer.forEach(element => {
+                element.style.borderColor="Lightred"
+            });
+            error.forEach(element =>{
+                element.removeAttribute("hidden")
+            })
+            throw new Error("Año inválido")
+        } else{
+            return true
+        }
     }
-})
+
+    function startDate() {
+        const currentDate = new Date();
+        const currentDateInSameTimeZone = new Date(
+            currentDate.getUTCFullYear(),
+            currentDate.getUTCMonth(),
+            currentDate.getUTCDate()
+        );
+
+        const day = parseInt(dayInput.value, 10);
+        const month = parseInt(monthInput.value, 10);
+        const year = parseInt(yearInput.value, 10);
+
+        try {
+            if (validatedDate(day, month, year)) {
+                const dateToCompare = new Date(Date.UTC(year, month - 1, day));
+
+                const totalD = differenceInDays(currentDateInSameTimeZone, dateToCompare);
+
+                const totalDays = totalD;
+                const { years, months, days } = convertDaysToYearsMonthsDays(totalDays);
+
+                resultDay.innerText = days.toString();
+                resultMonth.innerText = months.toString();
+                resultYear.innerText = years.toString();
+            }
+
+        } catch (error) {
+            console.error(error.message);
+            return
+        }
+
+    }
+});

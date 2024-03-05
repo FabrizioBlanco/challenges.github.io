@@ -63,7 +63,7 @@ input:focus-visible {
 
 .date__item {
     /* outline: 1px solid rgb(255, 47, 0); */
-    height: 68px;
+    height: 78px;
     position: relative;
     top: 30px;
     display: flex;
@@ -112,7 +112,13 @@ span {
     justify-content: flex-start;
     margin-left: 20px;
 }
-
+.error{
+    margin: 0;
+    text-align: center;
+    font-size: 8px;
+    font-weight: 500;
+    color: var(--Lightred)
+}
 @media screen and (min-width: 376px) {
     body {
         margin: 0 110px;
