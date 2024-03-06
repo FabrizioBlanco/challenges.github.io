@@ -1,43 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="stylesheet" href="index.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+    rel="stylesheet">
   <title>Frontend Mentor | Expenses chart component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
 </head>
+
 <body>
+  <section id="balance">
+    <header>
+      <span>My balance</span>
+      <b>$921.48</b>
+    </header>
+    <img id="balance__logoimg" src="images/logo.svg" alt="logo">
+  </section>
+  <main id="container">
+    <section id="container__spending">
+      <header>
+        <h3>Spending - Last 7 days</h3>
+      </header>
+      <div id="spending__weekdays">
+        <div class="bar-container">
+          <div class="bar"></div>
+          <span>mon</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar" ></div>
+          <span>tus</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar" ></div>
+          <span>wed</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar"></div>
+          <span>thu</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar"></div>
+          <span>fri</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar" ></div>
+          <span>sat</span>
+        </div>
+        <div class="bar-container">
+          <div class="bar" style="height: 10%;"></div>
+          <span>sun</span>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div id="total">
+        <p>total this month</p>
+        <span><b>$478.33</b></span>
+      </div>
+      <div id="earnings">
+        <span><b>+2.4%</b></span>
+        <p>from last month</p>
+      </div>
+      
+    </footer>
+  </main>
 
-  My balance
-  $921.48
 
-  Spending - Last 7 days
 
-  mon
-  tue
-  wed
-  thu
-  fri
-  sat
-  sun
-
-  Total this month
-  $478.33
-
-  +2.4%
-  from last month
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+  <script src="index.js"></script>
 </body>
+
 </html>

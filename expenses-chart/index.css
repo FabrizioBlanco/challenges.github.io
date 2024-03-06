@@ -1,0 +1,139 @@
+:root {
+    --Softred: hsl(10, 79%, 65%);
+    --cyan: hsl(186, 34%, 60%);
+    --darkBrown: hsl(25, 47%, 15%);
+    --mediumBrown: hsl(28, 10%, 53%);
+    --cream: hsl(27, 66%, 92%);
+    --veryPaleOrange: hsl(33, 100%, 98%);
+    --mainFont: "DM Sans", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--mainFont);
+    background-color: var(--cream);
+    font-size: 18px;
+}
+
+#balance {
+    color: white;
+    background-color: var(--Softred);
+    margin: 20px;
+    border-radius: 10px;
+    height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#balance header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+#balance span {
+    margin: 1px;
+    font-size: 0.9em;
+    color: var(--veryPaleOrange)
+}
+
+#balance b {
+    font-size: 1.5em;
+}
+
+#balance__logoimg {
+    margin-right: -15px;
+}
+
+#container {
+    margin: 20px;
+    border-radius: 10px;
+    background-color: var(--veryPaleOrange);
+
+}
+
+#container__spending header h3 {
+    padding: 10px 21.5px;
+}
+
+#spending__weekdays {
+    margin: 21.5px 24px;
+    height: 200px;
+    min-width: 300px;
+    border-bottom: 2px solid var(--cream);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-around
+}
+
+.bar-container {
+    text-align: center;
+    margin: 3px;
+}
+
+.bar {
+    width: 35px;
+    background: var(--Softred);
+    border-radius: 5px;
+}
+
+.higher {
+    background-color: var(--cyan);
+}
+
+.bar-container span {
+    color: var(--mediumBrown);
+    font-size: 0.9em;
+}
+
+footer {
+    margin: 0 24.5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.8em;
+    color: var(--mediumBrown)
+}
+
+#total {
+    display: flex;
+    margin: 0px;
+    margin-top: 0;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#total span {
+    font-size: 1.6em;
+}
+
+#earnings {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+#earnings span {
+    font-size: 0.9em;
+}
+@media screen and (min-width:376px) {
+    #balance{
+        margin: 20% auto;
+        margin-bottom: 0;
+        width: 335px;
+    }
+    #container{
+        margin:20% auto;
+        margin-top: 0;
+        width: 335px;
+    }
+}
+
