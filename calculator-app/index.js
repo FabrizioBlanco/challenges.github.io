@@ -1,4 +1,4 @@
-
+document.addEventListener("DOMContentLoaded", () => {
 /**
      *  I define an objet to associated  every range value
      *  and it consequence value
@@ -142,8 +142,7 @@ function updateSliderStyles(value) {
     }
 
 }
-document.addEventListener("DOMContentLoaded", () => {
-    const customRange = document.getElementById('selectorInput');
+const customRange = document.getElementById('selectorInput');
     customRange.addEventListener("input", () => {
         let actualState = customRange.value
         if (themeAction[actualState]) {

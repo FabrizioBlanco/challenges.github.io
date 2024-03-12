@@ -50,8 +50,9 @@ body {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 275px;
-    justify-content: space-evenly;
+    min-width: 275px;
+    max-width: 520px;
+    justify-content: space-between;
     align-items: center;
     color: white;
 }
@@ -63,6 +64,7 @@ body {
 }
 
 #selector {
+    max-width: 520px;
     width: 100%;
     display: flex;
     justify-content: end;
@@ -182,7 +184,7 @@ p {
     align-items: center;
     height: 80px;
     width: 275px;
-    max-width: 320px;
+    max-width: 520px;
     background-color: var(--displayBackground1);
     border-radius: 10px;
     margin-bottom: 25px;
@@ -198,6 +200,7 @@ p {
     flex-wrap: wrap;
     width: 275px;
     height: 375px;
+    max-width: 520px;
     margin-bottom: 7vh;
     justify-content: center;
     align-items: center;
@@ -221,7 +224,6 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-height: 75px;
     min-width: 52px;
     color: var(--veryDarkGrayishBlue);
     background-color: var(--keyBackground);
@@ -258,4 +260,35 @@ p {
     font-weight: 600;
     margin: 0;
     padding-bottom: 1px;
+}
+
+@media screen and (min-width:376px) {
+    #container{
+        margin: auto;
+    }
+    #selector{
+        width: 50%;
+    }
+    #selectorContainer{
+        margin: 4% 0;
+        height: 12vh;
+        width: 100%;
+    }
+    #display{
+        width: 100%;
+    }
+    .key{
+        width: 100px;
+        gap: 20px;
+    }
+    #keyPadContainer{
+        width: 100%;
+    }
+    .reset{
+        width: 100%;
+    }
+    .equal{
+        
+        width: 100%;
+    }
 }
