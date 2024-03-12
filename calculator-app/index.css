@@ -1,0 +1,261 @@
+:root {
+    /* --------------------------------------------*/
+    /*                    Theme1                   */
+    /* Background */
+    --background: hsl(222, 26%, 31%);
+    --backgroundKeyAndSelector: hsl(223, 31%, 20%);
+    --displayBackground1: hsl(224, 36%, 15%);
+    /* Key */
+    --specialKeyBackground: hsl(225, 21%, 49%);
+    --specialKeyShadow: hsl(224, 28%, 35%);
+    --redKeyBackground: hsl(6, 63%, 50%);
+    --equalKeyShadow: hsl(6, 70%, 34%);
+    --keyBackground: hsl(30, 25%, 89%);
+    --keyShadow: hsl(28, 16%, 65%);
+    /* Text */
+    --veryDarkGrayishBlue: hsl(221, 14%, 31%);
+    /* --------------------------------------------*/
+    /*                    Theme2                   */
+    /* Background */
+    --backgroundKeyAndSelector2: hsl(0, 5%, 81%);
+    /* Key */
+    --orangeKeyBackground2: hsl(25, 98%, 40%);
+    /* --------------------------------------------*/
+    /*                    Theme3                   */
+    /* Background */
+    --orangeKeyBackgroundAndScreen3: hsl(268, 71%, 12%);
+    /* Key */
+    --aquaKeyBackground3: hsl(176, 100%, 44%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "League Spartan", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    background-color: var(--background);
+    box-sizing: border-box;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+#selectorContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 275px;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+#selectorContainer p {
+    font-size: 0.35em;
+    padding-bottom: 7px;
+    padding-right: 25px;
+}
+
+#selector {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 65px;
+}
+
+label {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 0.35em;
+}
+
+.themeSelector {
+    position: relative;
+    left: 0;
+    width: 65px;
+    appearance: none;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.themeSelector::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--webkit-slider-thumb-background, var(--redKeyBackground));
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s linear;
+}
+
+
+.themeSelector::-webkit-slider-runnable-track {
+    background: var(--backgroundKeyAndSelector);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.themeSelector2 {
+    position: relative;
+    left: 0;
+    width: 65px;
+    appearance: none;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.themeSelector2::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--webkit-slider-thumb-background, var(--redKeyBackground));
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s linear;
+}
+
+
+.themeSelector2::-webkit-slider-runnable-track {
+    background: var(--backgroundKeyAndSelector2);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+.themeSelector3 {
+    position: relative;
+    left: 0;
+    width: 65px;
+    appearance: none;
+    outline: none;
+    border: none;
+    background: transparent;
+    color: white;
+}
+
+.themeSelector3::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: var(--webkit-slider-thumb-background, var(--aquaKeyBackground3));
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.1s linear;
+}
+
+
+.themeSelector3::-webkit-slider-runnable-track {
+    background: var(--orangeKeyBackgroundAndScreen3);
+    border-radius: 15px;
+    padding: 5px;
+}
+
+
+
+p {
+    margin: 0;
+    margin-top: 9px;
+}
+
+#display {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 80px;
+    width: 275px;
+    max-width: 320px;
+    background-color: var(--displayBackground1);
+    border-radius: 10px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+#display p {
+    padding-right: 25px;
+}
+
+#keyPadContainer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 275px;
+    height: 375px;
+    margin-bottom: 7vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: var(--backgroundKeyAndSelector);
+}
+
+#keyPad {
+    display: grid;
+    margin: 20px;
+    grid-template-columns: repeat(4, minmax(20px, 1fr));
+    grid-template-rows: repeat(5, minmax(20px, 1fr));
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+}
+
+.key {
+    width: 50px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 75px;
+    min-width: 52px;
+    color: var(--veryDarkGrayishBlue);
+    background-color: var(--keyBackground);
+    border-bottom: 4px solid var(--keyShadow);
+    border-radius: 10px;
+    font-size: 0.7em;
+    font-weight: 850;
+}
+
+.textKey {
+    border-bottom: 4px solid var(--specialKeyShadow);
+    background-color: var(--specialKeyBackground);
+    color: white;
+    width: 100%;
+
+}
+
+.reset {
+    grid-column: 1 /span 2;
+}
+
+.equal {
+    border-bottom: 4px solid var(--equalKeyShadow);
+    background-color: var(--redKeyBackground);
+    color: white;
+    grid-column: 3/ span 2;
+    width: 100%;
+}
+
+.reset p,
+.del p,
+.equal p {
+    font-size: 0.75em;
+    font-weight: 600;
+    margin: 0;
+    padding-bottom: 1px;
+}
