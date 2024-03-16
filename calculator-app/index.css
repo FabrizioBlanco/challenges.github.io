@@ -104,7 +104,6 @@ label {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    cursor: pointer;
     transition: transform 0.1s linear;
 }
 
@@ -132,7 +131,6 @@ label {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    cursor: pointer;
     transition: transform 0.1s linear;
 }
 
@@ -160,7 +158,6 @@ label {
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    cursor: pointer;
     transition: transform 0.1s linear;
 }
 
@@ -171,27 +168,30 @@ label {
     padding: 5px;
 }
 
-
-
 p {
     margin: 0;
     margin-top: 9px;
 }
 
-#display {
+.inputButton {
+    border: none;
+}
+
+#displayContainer {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 80px;
-    width: 275px;
+    min-width: 275px;
     max-width: 520px;
     background-color: var(--displayBackground1);
     border-radius: 10px;
     margin-bottom: 25px;
     color: white;
+    overflow: hidden;
 }
 
-#display p {
+#display {
     padding-right: 25px;
 }
 
@@ -231,6 +231,7 @@ p {
     border-radius: 10px;
     font-size: 0.7em;
     font-weight: 850;
+    transition: filter 230ms ease;
 }
 
 .textKey {
@@ -238,7 +239,6 @@ p {
     background-color: var(--specialKeyBackground);
     color: white;
     width: 100%;
-
 }
 
 .reset {
@@ -253,6 +253,13 @@ p {
     width: 100%;
 }
 
+.key:hover,
+input::-webkit-slider-thumb:hover {
+    filter: brightness(1.5);
+    cursor: pointer;
+    border-bottom: inherit;
+}
+
 .reset p,
 .del p,
 .equal p {
@@ -262,33 +269,40 @@ p {
     padding-bottom: 1px;
 }
 
-@media screen and (min-width:376px) {
-    #container{
+
+@media screen and (min-width:570px) {
+    #container {
         margin: auto;
     }
-    #selector{
+
+    #selector {
         width: 50%;
     }
-    #selectorContainer{
-        margin: 4% 0;
+
+    #selectorContainer {
+        margin: 1%;
         height: 12vh;
         width: 100%;
     }
-    #display{
+
+    #displayContainer {
         width: 100%;
     }
-    .key{
+
+    .key {
         width: 100px;
         gap: 20px;
     }
-    #keyPadContainer{
+
+    #keyPadContainer {
         width: 100%;
     }
-    .reset{
+
+    .reset {
         width: 100%;
     }
-    .equal{
-        
+
+    .equal {
         width: 100%;
     }
 }
