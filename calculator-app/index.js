@@ -108,33 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let storageNumber = ''
     let currentOperator = ''
     let result = ''
-
-    /**
-     * This is an add i want to add on. Isn't part of challenge
-     */
-    const holdDel = document.getElementById("del")
-    let delTimeout = 0
-    function holdEventButton() {
-        delTimeout = setTimeout(() => {
-            currentNumber = ''
-            storageNumber = ''
-            currentOperator = ''
-            inputEvents = []
-        }, 800);
-    }
-    holdDel.addEventListener("mousedown", holdEventButton)
-    holdDel.addEventListener("mouseup", () => {
-        clearTimeout(delTimeout)
-        currentNumber = ''
-        storageNumber = ''
-        currentOperator = ''
-        inputEvents = []
-    });
-    holdDel.addEventListener("mouseleave", () => {
-        clearTimeout(delTimeout)
-    });
     function calculator(event) {
-
         for (let i = 0; i < event.length; i++) {
             const element = event[i];
             document.getElementById('display').innerText = currentNumber
@@ -153,24 +127,55 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+
     /**
      *  management to especial buttons (DEL, RESET,=)
     */
+    function deleteLastNumber() {
+        console.log(`deleting:${currentNumber}`)        
+
+        if (currentNumber !== '') {
+            currentNumber = currentNumber.slice(0, -1)
+            document.getElementById('display').innerText = storageNumber + currentOperator + currentNumber
+        } else if (currentOperator !== '') {
+            currentOperator = ''
+            document.getElementById('display').innerText = storageNumber;
+        } else if (storageNumber !== '') {
+            storageNumber = ''
+            document.getElementById('display').innerText = ''
+        }
+        console.log(currentNumber)
+        console.log(currentOperator)
+    }
+    function resetCal() {
+        currentNumber = ''
+        console.log("currentNumber reseted")
+        storageNumber = ''
+        console.log("storageNumber reseted")
+        currentOperator = ''
+        console.log("currentOperator reseted")
+        inputEvents = []
+        console.log("inputEvents reseted")
+        result = ''
+        console.log("result reseted")
+        document.getElementById('display').innerText = ''
+    }
     function actmagmt(action) {
         switch (action) {
             case 'DEL':
-                currentNumber = currentNumber.slice(0, -1);
+                deleteLastNumber()
                 break;
             case 'RESET':
-                currentNumber = ''
-                storageNumber = ''
-                currentOperator = ''
-                inputEvents = []
-                result = 0
+                resetCal()
                 break
             case '=':
-                // Realiza la operación solo si hay un operador y un número actual
                 if (currentOperator && currentNumber !== '') {
+                    console.log("boton de '='. Y sus valores en este momento de la ejecución son:")
+                    console.log("Storage: " + storageNumber)
+                    console.log("currentNumber: " + currentNumber)
+                    console.log("currentOperator: " + currentOperator)
+                    console.log("inputEvents: " + inputEvents)
+                    console.log("result: " + result)
                     operation();
                 }
                 break;
@@ -243,11 +248,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputElement = document.querySelectorAll(".inputButton")
     inputElement.forEach(button => {
         button.addEventListener('click', (event) => {
-            const value = event.target.value
-            currentNumber = ''
+            const value = event.target.value;
+
+            currentNumber = '';
             inputEvents.push(value);
             calculator(inputEvents);
+
         })
     })
-
 })

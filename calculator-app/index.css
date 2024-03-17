@@ -44,6 +44,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 #selectorContainer {
@@ -55,6 +56,7 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
+    overflow: hidden;
 }
 
 #selectorContainer p {
@@ -193,6 +195,7 @@ p {
 
 #display {
     padding-right: 25px;
+    overflow: hidden;
 }
 
 #keyPadContainer {
