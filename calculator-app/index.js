@@ -128,25 +128,44 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+
+
     /**
-     *  management to especial buttons (DEL, RESET,=)
+   *  management to especial buttons (DEL, RESET,=)
+  */
+    function actmagmt(action) {
+        switch (action) {
+            case 'DEL':
+                deleteLastNumber()
+                break;
+            case 'RESET':
+                resetCal()
+                break
+            case '=':
+                if (currentOperator && currentNumber !== '') {
+                    operation()
+                }
+                break;
+        }
+    }
+    /**
+    * I delete last caracter number
     */
     function deleteLastNumber() {
-        console.log(`deleting:${currentNumber}`)        
-
         if (currentNumber !== '') {
             currentNumber = currentNumber.slice(0, -1)
             document.getElementById('display').innerText = storageNumber + currentOperator + currentNumber
         } else if (currentOperator !== '') {
             currentOperator = ''
-            document.getElementById('display').innerText = storageNumber;
+            document.getElementById('display').innerText = storageNumber
         } else if (storageNumber !== '') {
             storageNumber = ''
             document.getElementById('display').innerText = ''
         }
-        console.log(currentNumber)
-        console.log(currentOperator)
     }
+    /**
+     * Reset all variables
+     */
     function resetCal() {
         currentNumber = ''
         console.log("currentNumber reseted")
@@ -160,33 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("result reseted")
         document.getElementById('display').innerText = ''
     }
-    function actmagmt(action) {
-        switch (action) {
-            case 'DEL':
-                deleteLastNumber()
-                break;
-            case 'RESET':
-                resetCal()
-                break
-            case '=':
-                if (currentOperator && currentNumber !== '') {
-                    console.log("boton de '='. Y sus valores en este momento de la ejecución son:")
-                    console.log("Storage: " + storageNumber)
-                    console.log("currentNumber: " + currentNumber)
-                    console.log("currentOperator: " + currentOperator)
-                    console.log("inputEvents: " + inputEvents)
-                    console.log("result: " + result)
-                    operation();
-                }
-                break;
-        }
-    }
     /** 
      *  make operations
     */
     function operation() {
-        let num1 = parseFloat(storageNumber);
-        let num2 = parseFloat(currentNumber);
+        let num1 = parseFloat(storageNumber)
+        let num2 = parseFloat(currentNumber)
         switch (currentOperator) {
             case '+':
                 result = num1 + num2

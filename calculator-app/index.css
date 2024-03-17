@@ -44,7 +44,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 #selectorContainer {
@@ -56,7 +55,6 @@ body {
     justify-content: space-between;
     align-items: center;
     color: white;
-    overflow: hidden;
 }
 
 #selectorContainer p {
@@ -109,7 +107,6 @@ label {
     transition: transform 0.1s linear;
 }
 
-
 .themeSelector::-webkit-slider-runnable-track {
     background: var(--backgroundKeyAndSelector);
     border-radius: 15px;
@@ -135,7 +132,6 @@ label {
     border-radius: 50%;
     transition: transform 0.1s linear;
 }
-
 
 .themeSelector2::-webkit-slider-runnable-track {
     background: var(--backgroundKeyAndSelector2);
@@ -163,13 +159,11 @@ label {
     transition: transform 0.1s linear;
 }
 
-
 .themeSelector3::-webkit-slider-runnable-track {
     background: var(--orangeKeyBackgroundAndScreen3);
     border-radius: 15px;
     padding: 5px;
 }
-
 p {
     margin: 0;
     margin-top: 9px;
@@ -190,10 +184,10 @@ p {
     border-radius: 10px;
     margin-bottom: 25px;
     color: white;
-    overflow: hidden;
 }
 
 #display {
+    max-width: 520px;
     padding-right: 25px;
     overflow: hidden;
 }
