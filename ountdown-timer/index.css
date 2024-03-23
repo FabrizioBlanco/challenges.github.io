@@ -96,7 +96,6 @@ span {
 }
 
 #social {
-    outline: 1px solid red;
     position: absolute;
     display: flex;
     align-items: center;
