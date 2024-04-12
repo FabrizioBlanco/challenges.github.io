@@ -1,0 +1,13 @@
+.stepOneContainer{
+    height: 350px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    & input{
+        width: 100%;
+        height: 20px;
+        border: 1px solid var(--coolGray);
+    }
+}
+
