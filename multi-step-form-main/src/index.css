@@ -18,12 +18,25 @@
 }
 
 body {
-  height: 100vh;
-  box-sizing: content-box;
+  margin: 0;
+  height: 100%;
+  box-sizing: border-box;
   font-family: 'Ubuntu';
   background: url(assets/images/bg-sidebar-mobile.svg);
   background-color: var(--magnolia);
   background-repeat: no-repeat;
   background-size: 100%;
   background-position: top;
+}
+.option {
+  height: 70px;
+  border: 1px solid var(--pastelBlue);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+.option:hover{
+  border: 1px solid var(--purplishBlue);
+  background-color: var(--alabaster);
 }

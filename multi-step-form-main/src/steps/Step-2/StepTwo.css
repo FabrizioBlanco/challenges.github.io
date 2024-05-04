@@ -1,0 +1,53 @@
+.SelectionContainer {
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 20px;
+}
+
+p,
+#yearly {
+    margin: 0;
+    color: var(--lightGray)
+}
+form {
+    min-width: 100%;
+}
+.optionImg {
+    padding: 10px;
+    width: 55px;
+}
+
+.option_text {
+    padding: 5px;
+}
+
+.suscription {
+    margin-bottom: 25px;
+    border: none;
+    border-radius: 10px;    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--magnolia);
+    height: 50px;
+}
+
+#option_range{
+    -webkit-appearance: none;
+    appearance: none;
+    background: var(--marineBlue);
+    border-radius: 10px;
+    width: 45px;
+    height: 16px;
+    padding: 3px;    
+}
+#option_range::-webkit-slider-thumb{
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 10px;
+}
+

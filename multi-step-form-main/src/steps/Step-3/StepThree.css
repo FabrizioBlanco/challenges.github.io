@@ -1,0 +1,32 @@
+.check_option {
+    margin: 15px;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--coolGray);
+    border-radius: 4px;
+    outline: none
+}
+
+.check_option::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.check_option:checked::before {
+    content: "\2713";
+    background-color: var(--purplishBlue);
+    border-radius: 4px;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.price {
+    color: var(--purplishBlue);
+    padding-right: 10px;
+}
