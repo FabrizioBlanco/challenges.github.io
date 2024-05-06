@@ -23,7 +23,8 @@ export default function StepOne({ handleInput }) {
                         (event) => {
                             setName(event.target.value);
                             handleInput(event)
-                        }}
+                        }
+                    }
                 />
                 <label>Email Adress</label>
                 <input
@@ -35,7 +36,8 @@ export default function StepOne({ handleInput }) {
                         setEmail(event.target.value);
                         handleInput(event)
                     }
-                    } />
+                    }
+                />
                 <label>Phone Number</label>
                 <input
                     type="text"
@@ -46,7 +48,8 @@ export default function StepOne({ handleInput }) {
                         setPhone(event.target.value);
                         handleInput(event)
                     }
-                    } />
+                    }
+                />
             </form>
         </div>
     )

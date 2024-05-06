@@ -7,32 +7,33 @@ import StepThree from './steps/Step-3/StepThree'
 import StepFour from './steps/Step-4/StepFour'
 
 export default function App() {
-
-
   const [actualPage, setActualPage] = useState(1)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    sub: '',
-    period: ''
+    price: 0,
+    extra: ''
   })
   /**
    * Disable button "Go Back" if step is 1
    */
-
-  const Button = () => {
-    console.log(formData)
-    let url = window.location.pathname
-    console.log("Estamos en:", url)
-    if (actualPage !== 1) {
-      return <Link className="button" id='backButton'
-        onClick={
-          () => {
-            setActualPage(actualPage - 1)
-          }}
-        to={`/step-${actualPage - 1}`}
-      >Go Back</Link>
+  function Button() {
+    // let url = window.location.pathname
+    // console.log("Estamos en:", url)
+    if (actualPage > 1) {
+      console.log(formData)
+      return <>
+        <Link
+          className="button"
+          id='backButton'
+          onClick={
+            () => {
+              setActualPage(actualPage - 1)
+            }}
+          to={`/step-${actualPage - 1}`}
+        >Go Back</Link>
+      </>
     } else {
       //Any element just to fill DOM space. Do not pay attention  to this
       return <><p></p></>
