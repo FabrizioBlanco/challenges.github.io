@@ -1,12 +1,12 @@
 import "./StepTwo.css";
 import { useEffect, useState } from "react";
 
-const arcadeValue = 34;
-const arcadeYearlyValue = 54;
-const advancedValue = 56;
-const advancedYearlyValue = 106;
-const proValue = 145;
-const proYearlyValue = 245;
+const arcadeValue = 9;
+const arcadeYearlyValue = 90;
+const advancedValue = 12;
+const advancedYearlyValue = 120;
+const proValue = 15;
+const proYearlyValue = 150;
 
 export default function StepTwo({ handleInput, setActualPage }) {
     const [subscription, setSubscription] = useState("arcade");
@@ -22,11 +22,23 @@ export default function StepTwo({ handleInput, setActualPage }) {
 
     const handlePriceChange = () => {
         if (subscription === "arcade") {
+            handleInput({target: {
+                name: "subName",
+                value: subscription
+            }})
             return period === 0 ? arcadeValue : arcadeYearlyValue
         }
         if (subscription === "advanced") {
+            handleInput({target: {
+                name: "subName",
+                value: subscription
+            }})
             return period === 0 ? advancedValue : advancedYearlyValue
         }
+        handleInput({target: {
+            name: "subName",
+            value: subscription
+        }})
         if (subscription === "pro") {
             return period === 0 ? proValue : proYearlyValue
         }
@@ -35,7 +47,8 @@ export default function StepTwo({ handleInput, setActualPage }) {
     useEffect(() => {
         const price = handlePriceChange();
         handleInput({ target: { name: "price", value: price } });
-    }, [subscription, period]);
+    }, [subscription , period]);
+
 
     return (
         <div className="SelectionContainer">
@@ -47,6 +60,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     <div className="option_text">
                         <span>Arcade</span>
                         <p>{`${period === 0 ? `$${arcadeValue}/mo` : `$${arcadeYearlyValue}/yr`}`}</p>
+                        <p id="freeMonths">{`${period === 1 ? `2 months free` : ``}`}</p>   
                     </div>
                 </div>
 
@@ -55,6 +69,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     <div className="option_text">
                         <span>Advanced</span>
                         <p>{`${period === 0 ? `$${advancedValue}/mo` : `$${advancedYearlyValue}/yr`}`}</p>
+                        <p id="freeMonths">{`${period === 1 ? `2 months free` : ``}`}</p>
                     </div>
                 </div>
 
@@ -63,6 +78,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     <div className="option_text">
                         <span>Pro</span>
                         <p>{`${period === 0 ? `$${proValue}/mo` : `$${proYearlyValue}/yr`}`}</p>
+                        <p id="freeMonths">{`${period === 1 ? `2 months free` : ``}`}</p>
                     </div>
                 </div>
 
@@ -75,7 +91,9 @@ export default function StepTwo({ handleInput, setActualPage }) {
                         max={1}
                         value={period}
                         onChange={(event) => {
-                            handlePeriodChange(event.target.value);
+                            let changeValue = parseInt(event.target.value)
+                            handlePeriodChange(changeValue);
+                            handleInput({ target: { name: "sub", value: changeValue } });
                         }}
                     />
                     <label id="yearly"> Yearly</label>

@@ -20,7 +20,7 @@ form {
 }
 
 .option_text {
-    padding: 5px;
+    text-align: start;
 }
 
 .suscription {
@@ -33,7 +33,9 @@ form {
     background-color: var(--magnolia);
     height: 50px;
 }
-
+#freeMonths{
+    color: var(--coolGray);
+}
 #option_range{
     -webkit-appearance: none;
     appearance: none;

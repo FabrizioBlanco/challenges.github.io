@@ -13,7 +13,8 @@ export default function App() {
     email: '',
     phone: '',
     price: 0,
-    extra: ''
+    sub: 0,
+    subName: ''
   })
   /**
    * Disable button "Go Back" if step is 1
@@ -42,7 +43,7 @@ export default function App() {
   /**
    * just make a render when button is press
    */
-  const haddleInput = (event) => {
+  const hadleInput = (event) => {
     const { name, value } = event.target
     setFormData({ ...formData, [name]: value })
   }
@@ -66,10 +67,10 @@ export default function App() {
       </header>
       <section id='mainContainer'>
         <Routes>
-          <Route path="/step-1" element={<StepOne handleInput={haddleInput} setActualPage={() => { setActualPage(1) }} />} />
-          <Route path="/step-2" element={<StepTwo handleInput={haddleInput} setActualPage={() => { setActualPage(2) }} />} />
-          <Route path="/step-3" element={<StepThree handleInput={haddleInput} setActualPage={() => { setActualPage(3) }} />} />
-          <Route path="/step-4" element={<StepFour handleInput={haddleInput} setActualPage={() => { setActualPage(4) }} />} />
+          <Route path="/step-1" element={<StepOne handleInput={hadleInput} setActualPage={() => { setActualPage(1) }} />} />
+          <Route path="/step-2" element={<StepTwo handleInput={hadleInput} setActualPage={() => { setActualPage(2) }} />} />
+          <Route path="/step-3" element={<StepThree handleInput={hadleInput} formData={formData} setActualPage={() => { setActualPage(3) }} />} />
+          <Route path="/step-4" element={<StepFour formData={formData} setActualPage={() => { setActualPage(4) }} />} />
           {/*Redirect route when use "/" in URL */}
           <Route path="/" element={<Navigate to="/step-1" />} />
           {/*Error URL */}
