@@ -4,5 +4,8 @@ import react from '@vitejs/plugin-react-swc'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base:"/multi-step-form-main/",
+  build: {
+    outDir: 'docs',
+  },
+  base:"https://fabrizioblanco.github.io/challenges.github.io/multi-step-form-main"
 })
