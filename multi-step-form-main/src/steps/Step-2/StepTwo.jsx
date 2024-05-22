@@ -9,46 +9,35 @@ const proValue = 15;
 const proYearlyValue = 150;
 
 export default function StepTwo({ handleInput, setActualPage }) {
-    const [subscription, setSubscription] = useState("arcade");
-    const [period, setPeriod] = useState(0);
+    const [subscription, setSubscription] = useState("arcade")
+    const [period, setPeriod] = useState(0)
 
     useEffect(() => {
         setActualPage(2);
-    }, [setActualPage]);
+    }, [setActualPage])
 
     const handlePeriodChange = (value) => {
-        setPeriod(parseInt(value));
+        setPeriod(parseInt(value))
     };
 
-    const handlePriceChange = () => {
+    const calculatePrice = () => {
+        let price = 0;
         if (subscription === "arcade") {
-            handleInput({target: {
-                name: "subName",
-                value: subscription
-            }})
-            return period === 0 ? arcadeValue : arcadeYearlyValue
+            price = period === 0 ? arcadeValue : arcadeYearlyValue
+        } else if (subscription === "advanced") {
+            price = period === 0 ? advancedValue : advancedYearlyValue
+        } else if (subscription === "pro") {
+            price = period === 0 ? proValue : proYearlyValue
         }
-        if (subscription === "advanced") {
-            handleInput({target: {
-                name: "subName",
-                value: subscription
-            }})
-            return period === 0 ? advancedValue : advancedYearlyValue
-        }
-        handleInput({target: {
-            name: "subName",
-            value: subscription
-        }})
-        if (subscription === "pro") {
-            return period === 0 ? proValue : proYearlyValue
-        }
-    }
+        return price
+    };
 
     useEffect(() => {
-        const price = handlePriceChange();
-        handleInput({ target: { name: "price", value: price } });
-    }, [subscription , period]);
-
+        const price = calculatePrice()
+        handleInput({ target: { name: "price", value: price } })
+        handleInput({ target: { name: "subName", value: subscription } })
+        handleInput({ target: { name: "sub", value: period } })
+    }, [subscription, period])
 
     return (
         <div className="SelectionContainer">
@@ -60,7 +49,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     <div className="option_text">
                         <span>Arcade</span>
                         <p>{`${period === 0 ? `$${arcadeValue}/mo` : `$${arcadeYearlyValue}/yr`}`}</p>
-                        <p id="freeMonths">{`${period === 1 ? `2 months free` : ``}`}</p>   
+                        <p id="freeMonths">{`${period === 1 ? `2 months free` : ``}`}</p>
                     </div>
                 </div>
 
@@ -83,7 +72,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                 </div>
 
                 <div className="suscription">
-                    <label>Monthly </label>
+                    <label>Monthly</label>
                     <input
                         id="option_range"
                         type="range"
@@ -91,14 +80,13 @@ export default function StepTwo({ handleInput, setActualPage }) {
                         max={1}
                         value={period}
                         onChange={(event) => {
-                            let changeValue = parseInt(event.target.value)
-                            handlePeriodChange(changeValue);
-                            handleInput({ target: { name: "sub", value: changeValue } });
+                            handlePeriodChange(parseInt(event.target.value))
                         }}
                     />
-                    <label id="yearly"> Yearly</label>
+                    <label id="yearly">Yearly</label>
                 </div>
             </form>
         </div>
     );
 }
+

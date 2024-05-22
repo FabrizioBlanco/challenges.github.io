@@ -1,6 +1,6 @@
 import './App.css'
 import { Routes, Route, Navigate, Link } from 'react-router-dom'
-import React, { useState } from 'react';
+import React, { useEffect,useState } from 'react';
 import StepOne from './steps/Step-1/StepOne'
 import StepTwo from './steps/Step-2/StepTwo'
 import StepThree from './steps/Step-3/StepThree'
@@ -14,16 +14,29 @@ export default function App() {
     phone: '',
     price: 0,
     sub: 0,
-    subName: ''
+    subName: 'arcade',
+    addOn: []
   })
+  const [backData, setBackData] = useState(null)
+  const saveBackUp = ()=>{
+    setBackData ({...formData})
+    console.log("Data a guardar",formData)
+  }
+  const restoreBackUp = ()=>{
+    console.log("Data a restaurar",backData)
+    setFormData ({... backData})
+  }
+  useEffect (()=>{
+    saveBackUp({ ...formData });
+  },[formData])
+  useEffect (()=>{
+    restoreBackUp({ ...formData });
+  },[])
   /**
    * Disable button "Go Back" if step is 1
    */
   function Button() {
-    // let url = window.location.pathname
-    // console.log("Estamos en:", url)
     if (actualPage > 1) {
-      console.log(formData)
       return <>
         <Link
           className="button"
@@ -43,9 +56,9 @@ export default function App() {
   /**
    * just make a render when button is press
    */
-  const hadleInput = (event) => {
+  const hadleInput = (event) => {   
     const { name, value } = event.target
-    setFormData({ ...formData, [name]: value })
+    setFormData((prevState) => ({ ...prevState, [name]: value }))
   }
   /**
    * Handle data from StepOne component
@@ -68,9 +81,9 @@ export default function App() {
       <section id='mainContainer'>
         <Routes>
           <Route path="/step-1" element={<StepOne handleInput={hadleInput} setActualPage={() => { setActualPage(1) }} />} />
-          <Route path="/step-2" element={<StepTwo handleInput={hadleInput} setActualPage={() => { setActualPage(2) }} />} />
-          <Route path="/step-3" element={<StepThree handleInput={hadleInput} formData={formData} setActualPage={() => { setActualPage(3) }} />} />
-          <Route path="/step-4" element={<StepFour formData={formData} setActualPage={() => { setActualPage(4) }} />} />
+          <Route path="/step-2" element={<StepTwo handleInput={hadleInput} formData={formData} setFormData={setFormData} setActualPage={() => { setActualPage(2) }} />} />
+          <Route path="/step-3" element={<StepThree handleInput={hadleInput} formData={formData}  setFormData={setFormData} setActualPage={() => { setActualPage(3) }} />} />
+          <Route path="/step-4" element={<StepFour restorebackUp = {restoreBackUp} formData={formData}  setActualPage={() => { setActualPage(4) }} />} />
           {/*Redirect route when use "/" in URL */}
           <Route path="/" element={<Navigate to="/step-1" />} />
           {/*Error URL */}
@@ -82,15 +95,15 @@ export default function App() {
           } />
         </Routes>
       </section>
-
       <footer>
         <Button />
         <Link className="button" id='nextButton' to={`/step-${actualPage + 1}`}
           onClick={() => {
+            saveBackUp()
             if (actualPage > 1) {
               setActualPage(actualPage + 1)
             }
-            handleSaveData(formData);
+            handleSaveData(formData)
           }}>Next Step</Link>
       </footer>
     </>

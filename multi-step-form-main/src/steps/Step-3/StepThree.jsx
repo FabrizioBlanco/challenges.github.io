@@ -8,15 +8,29 @@ const price2Y = 20
 const price3M = 2
 const price3Y = 20
 
-export default function StepThree({ handleInput, formData }) {
-    const handleCheckOption = (checked, price) => {
+export default function StepThree({ handleInput, formData, setFormData }) {
+    const handleCheckOption = (checked, price, addOn) => {
         const extraPrice = checked ? formData.price + price : formData.price - price
-        handleInput({
-            target: {
-                name: "price",
-                value: extraPrice
-            }
-        })
+        if (checked) {
+            setFormData((prevState) => ({
+                ...prevState,
+                price: extraPrice,
+                addOn:  [...(Array.isArray(prevState.addOn) ? prevState.addOn : []), addOn]
+            }))
+        } else {
+            setFormData((prevState) => ({
+                ...prevState,
+                price: extraPrice,
+                addOn: (Array.isArray(prevState.addOn) ? prevState.addOn : []).filter(item => item !== addOn)
+            }))
+        }
+        // handleInput({
+        //     target: {
+        //         name: "price",
+        //         value: extraPrice
+        //     }
+        // })
+
     }
     return (
         <div className="SelectionContainer">
@@ -28,8 +42,7 @@ export default function StepThree({ handleInput, formData }) {
                         type="checkbox"
                         className="check_option"
                         onChange={(data) => {
-                            handleCheckOption(data.target.checked, formData.sub === 0 ? price1M : price1Y)
-                            console.log("Check 1")
+                            handleCheckOption(data.target.checked, formData.sub === 0 ? price1M : price1Y, "Online service")
                         }}
                     />
                     <div className="option_text">
@@ -41,8 +54,7 @@ export default function StepThree({ handleInput, formData }) {
                 <div className="option">
                     <input type="checkbox" className="check_option"
                         onChange={(data) => {
-                            handleCheckOption(data.target.checked, formData.sub === 0 ? price2M : price2Y)
-                            console.log("Check 2")
+                            handleCheckOption(data.target.checked, formData.sub === 0 ? price2M : price2Y, "Larger Storage")
                         }} />
                     <div className="option_text">
                         <span>Larger Storage</span>
@@ -53,8 +65,7 @@ export default function StepThree({ handleInput, formData }) {
                 <div className="option">
                     <input type="checkbox" className="check_option"
                         onChange={(data) => {
-                            handleCheckOption(data.target.checked, formData.sub === 0 ? price3M : price3Y)
-                            console.log("Check 3")
+                            handleCheckOption(data.target.checked, formData.sub === 0 ? price3M : price3Y, "Customizable profile")
                         }} />
                     <div className="option_text">
                         <span>Customizable profile</span>
