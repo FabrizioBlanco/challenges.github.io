@@ -1,8 +1,26 @@
-.resume{
-    margin: 10px;
+.resumeContainer {
+    margin: 10px 0;
     display: flex;
     flex-direction: column;
-
+    justify-content: center;
     width: 100%;
-    background-color: var(--magnolia );
+    flex-wrap: nowrap;
+    border-radius: 10px;
+    background-color: var(--magnolia);
+}
+
+a {
+    color: var(--strawberryRred);
+}
+
+.subName {
+    color: var(--marineBlue);
+    margin: 10px;
+    border-bottom: 1px solid var(--lightGray);
+}
+
+.resumeBox {
+    color: var(--marineBlue);
+    padding: 0;
+    margin: 10px;
 }

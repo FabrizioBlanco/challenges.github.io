@@ -1,5 +1,5 @@
-import { useState } from "react"
 import "./StepThree.css"
+import { useEffect } from "react"
 
 const price1M = 1
 const price1Y = 10
@@ -8,29 +8,27 @@ const price2Y = 20
 const price3M = 2
 const price3Y = 20
 
-export default function StepThree({ handleInput, formData, setFormData }) {
-    const handleCheckOption = (checked, price, addOn) => {
-        const extraPrice = checked ? formData.price + price : formData.price - price
-        if (checked) {
-            setFormData((prevState) => ({
-                ...prevState,
-                price: extraPrice,
-                addOn:  [...(Array.isArray(prevState.addOn) ? prevState.addOn : []), addOn]
-            }))
-        } else {
-            setFormData((prevState) => ({
-                ...prevState,
-                price: extraPrice,
-                addOn: (Array.isArray(prevState.addOn) ? prevState.addOn : []).filter(item => item !== addOn)
-            }))
-        }
-        // handleInput({
-        //     target: {
-        //         name: "price",
-        //         value: extraPrice
-        //     }
-        // })
+export default function StepThree({ formData, setFormData, handleStepThreeChange }) {
 
+    useEffect(() => {
+        handleStepThreeChange(price1M, price2M, price3M);
+    }, [formData]);
+    const handleCheckOption = (checked, price, addOn) => {
+        let updatedAddOn = [...formData.addOn];
+        let updatedPrice = formData.price;
+        const index = updatedAddOn.indexOf(addOn);
+        if (checked && index === -1) {
+            updatedAddOn.push(addOn);
+            updatedPrice += price;
+        } else if (!checked && index !== -1) {
+            updatedAddOn.splice(index, 1);
+            updatedPrice -= price;
+        }
+        setFormData(prevState => ({
+            ...prevState,
+            price: updatedPrice,
+            addOn: updatedAddOn
+        }));
     }
     return (
         <div className="SelectionContainer">
@@ -77,3 +75,17 @@ export default function StepThree({ handleInput, formData, setFormData }) {
         </div>
     )
 }
+// const extraPrice = checked ? formData.price + price : formData.price - price
+// if (checked) {
+//     setFormData((prevState) => ({
+//         ...prevState,
+//         price: extraPrice,
+//         addOn: [...new Set([...(Array.isArray(prevState.addOn) ? prevState.addOn : []), addOn])]
+//     }))
+// } else {
+//     setFormData((prevState) => ({
+//         ...prevState,
+//         price: extraPrice,
+//         addOn: (Array.isArray(prevState.addOn) ? prevState.addOn : []).filter(item => item !== addOn)
+//     }))
+// }

@@ -9,28 +9,28 @@ const proValue = 15;
 const proYearlyValue = 150;
 
 export default function StepTwo({ handleInput, setActualPage }) {
-    const [subscription, setSubscription] = useState("arcade")
+    const [subscription, setSubscription] = useState("Arcade")
     const [period, setPeriod] = useState(0)
 
     useEffect(() => {
-        setActualPage(2);
+        setActualPage(2)
     }, [setActualPage])
 
     const handlePeriodChange = (value) => {
         setPeriod(parseInt(value))
-    };
+    }
 
     const calculatePrice = () => {
         let price = 0;
-        if (subscription === "arcade") {
+        if (subscription === "Arcade") {
             price = period === 0 ? arcadeValue : arcadeYearlyValue
-        } else if (subscription === "advanced") {
+        } else if (subscription === "Advanced") {
             price = period === 0 ? advancedValue : advancedYearlyValue
-        } else if (subscription === "pro") {
+        } else if (subscription === "Pro") {
             price = period === 0 ? proValue : proYearlyValue
         }
         return price
-    };
+    }
 
     useEffect(() => {
         const price = calculatePrice()
@@ -44,7 +44,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
             <h1>Select your plan</h1>
             <p>You have the option of monthly or yearly billing.</p>
             <form>
-                <div className="option" onClick={() => setSubscription("arcade")}>
+                <div className="option" onClick={() => setSubscription("Arcade")}>
                     <img className="optionImg" src="src/assets/images/icon-arcade.svg" alt="arcade" />
                     <div className="option_text">
                         <span>Arcade</span>
@@ -53,7 +53,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     </div>
                 </div>
 
-                <div className="option" onClick={() => setSubscription("advanced")}>
+                <div className="option" onClick={() => setSubscription("Advanced")}>
                     <img className="optionImg" src="src/assets/images/icon-advanced.svg" alt="advanced" />
                     <div className="option_text">
                         <span>Advanced</span>
@@ -62,7 +62,7 @@ export default function StepTwo({ handleInput, setActualPage }) {
                     </div>
                 </div>
 
-                <div className="option" onClick={() => setSubscription("pro")}>
+                <div className="option" onClick={() => setSubscription("Pro")}>
                     <img className="optionImg" src="src/assets/images/icon-pro.svg" alt="pro" />
                     <div className="option_text">
                         <span>Pro</span>
@@ -87,6 +87,6 @@ export default function StepTwo({ handleInput, setActualPage }) {
                 </div>
             </form>
         </div>
-    );
+    )
 }
 
